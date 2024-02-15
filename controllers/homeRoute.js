@@ -49,4 +49,58 @@ router.get("/account", withAuth, async (req, res) => {
     }
 });
 
+// User route for creating a new account
+router.get("/signup", (req, res) => {
+    // If they are already logged in then redirect to the homepage
+    if (req.session.logged_in) {
+        res.redirect("/");
+        return;
+    }
+    res.render("signup");
+});
+
+// User route for creating a new post
+router.get("/newpost", withAuth, async (req, res) => {
+    try {
+        res.render("newpost", {
+            logged_in: true,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// User route for editing a post
+router.get("/editpost", withAuth, async (req, res) => {
+    try {
+        res.render("editpost", {
+            logged_in: true,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// User route for viewing a post
+router.get("/viewpost", withAuth, async (req, res) => {
+    try {
+        res.render("viewpost", {
+            logged_in: true,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// User route for deleting a post
+router.get("/deletepost", withAuth, async (req, res) => {
+    try {
+        res.render("deletepost", {
+            logged_in: true,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

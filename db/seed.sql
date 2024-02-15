@@ -1,12 +1,38 @@
--- Setup table for blog posts
-CREATE TABLE posts (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+-- DROP all existing tables
+DROP TABLE IF EXISTS blog;
+DROP TABLE IF EXISTS comment;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS user_session;
+DROP TABLE IF EXISTS post;
+
+-- Setup table for blog posts/comments/etc
+CREATE TABLE blog (
+  id SERIAL PRIMARY KEY,
   title VARCHAR(255),
-  body TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  content TEXT
 );
 
--- Seed the database with some initial data
-INSERT INTO posts (title, body) VALUES
-  ('Hello World', 'This is my first blog post!'),
-  ('Goodbye World', 'This is my last blog post.');
+CREATE TABLE comment (
+  id SERIAL PRIMARY KEY,
+  blog_id INT REFERENCES blog(id),
+  content TEXT
+);
+
+CREATE TABLE user (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255),
+  password VARCHAR(255)
+);
+
+CREATE TABLE user_session (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES user(id),
+  token VARCHAR(255)
+);
+
+CREATE TABLE post (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  content TEXT,
+  user_id INT REFERENCES user(id)
+);
