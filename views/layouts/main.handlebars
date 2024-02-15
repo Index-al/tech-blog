@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Blog</title>
+    {{!-- Import tailwind CSS library --}}
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css"
+      rel="stylesheet"
+  </head>
+
+        {{!-- Navbar and header stuff --}}
+  <body>
+    <header class="bg-gray-800 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+            <h1 class="text-xl font-semibold">
+                <a href="/" class="text-white hover:text-gray-300">My Tech Blog</a>
+            </h1>
+            <nav>
+                {{#if logged_in}}
+                <a href="/account" class="px-3 py-2 rounded-md text-sm font-medium bg-gray-900 hover:bg-gray-700">My Account</a>
+                <button id="logout" class="ml-4 px-3 py-2 rounded-md text-sm font-medium bg-red-600 hover:bg-red-700">Logout</button>
+                {{else}}
+                <a href="/login" class="px-3 py-2 rounded-md text-sm font-medium bg-blue-600 hover:bg-blue-700">Login</a>
+                {{/if}}
+            </nav>
+            </div>
+        </div>
+    </header>
+    
+              {{!-- MAIN PAGE CONTENT --}}
+    {{!-- (rendered dynamically using handlebars) --}}
+    <main>
+      {{{body}}}
+    </main>
+
+    <!-- Render logout button if the user is logged in already -->
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
+</html>
