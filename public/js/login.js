@@ -20,7 +20,7 @@ const loginFormHandler = async (event) => {
 
         // If we get a good response then redirect the user
         if (response.ok) {
-            document.location.replace("/");
+            document.location.replace("/account");
         } else { // otherwise report the error
             const data = await response.json();
             console.log("Error logging in: ", data);
@@ -54,7 +54,7 @@ const signupFormHandler = async (event) => {
 
         // If we get a good response then redirect the user
         if (response.ok) {
-            document.location.replace("/");
+            document.location.replace("/account");
         } else { // otherwise report the error
             const data = await response.json();
             console.log(data);
