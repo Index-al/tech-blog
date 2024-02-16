@@ -66,18 +66,21 @@ router.post("/logout", (req, res) => {
 
 // New user sign up logic
 router.post("/signup", async (req, res) => {
-  console.log('Trying to sign up a user!');
   try {
-    const userData = await User.create(req.body);
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      res.status(200).json(userData);
-      res.redirect("/account");
+      const userData = await User.create({
+          username: req.body.username,
+          email: req.body.email,
+          password: req.body.password
+      });
+
+      req.session.save(() => {
+          req.session.user_id = userData.id;
+          req.session.logged_in = true;
+          res.json({ user: userData, message: "Signup successful!" });
       });
   } catch (err) {
-    res.status(400).json(err);
-    console.log('Error in creating account! ', err);
+      res.status(400).json(err); // Log the error to see what went wrong
+      console.error('Signup error: ', err);
   }
 });
 

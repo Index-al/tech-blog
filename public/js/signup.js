@@ -7,13 +7,10 @@ const signupFormHandler = async (event) => {
     const email = document.querySelector("#email-signup").value.trim();
     const password = document.querySelector("#password-signup").value.trim();
 
-    // Error debugging
-    console.log("Hitting the signup form handler!");
-
     // If all fields are provided, create a new user
     if (username && email && password) {
         // Send a POST request to the signup route
-        const response = await fetch("/signup", {
+        const response = await fetch("/api/users/signup", { // Is this the right endpoint?
             method: "POST",
             body: JSON.stringify({ username, email, password }),
             headers: { "Content-Type": "application/json" }
@@ -22,20 +19,11 @@ const signupFormHandler = async (event) => {
         // If we get a good response then redirect the user
         if (response.ok) {
             document.location.replace("/account");
-        } else { // otherwise report the error
+        } else {
             const data = await response.json();
-            console.log(data);
-
-            alert('Failed to sign up: ' + response.statusText);
+            alert('Failed to sign up: ' + data.message);
         }
     }
 }
 
-// Event listener for signup form
 document.querySelector("#signup-form").addEventListener("submit", signupFormHandler);
-
-// Event listener for login link
-document.querySelector("#login-link").addEventListener("click", (event) => {
-    event.preventDefault();
-    document.location.replace("/login");
-});

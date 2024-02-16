@@ -20,7 +20,7 @@ const loginFormHandler = async (event) => {
 
         // If we get a good response then redirect the user
         if (response.ok) {
-            document.location.replace("/account");
+            document.location.replace("/");
         } else { // otherwise report the error
             const data = await response.json();
             console.log("Error logging in: ", data);
@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
     event.preventDefault();
 
     // Grab user input
-    const username = document.querySelector("#username-signup").value.trim();
+    const username = document.querySelector("#name-signup").value.trim();
     const email = document.querySelector("#email-signup").value.trim();
     const password = document.querySelector("#password-signup").value.trim();
 
@@ -46,7 +46,7 @@ const signupFormHandler = async (event) => {
     // If all fields are provided, create a new user
     if (username && email && password) {
         // Send a POST request to the signup route
-        const response = await fetch("/api/users", {
+        const response = await fetch("/api/users/signup", {
             method: "POST",
             body: JSON.stringify({ username, email, password }),
             headers: { "Content-Type": "application/json" }
@@ -54,7 +54,7 @@ const signupFormHandler = async (event) => {
 
         // If we get a good response then redirect the user
         if (response.ok) {
-            document.location.replace("/account");
+            document.location.replace("/");
         } else { // otherwise report the error
             const data = await response.json();
             console.log(data);

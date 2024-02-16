@@ -4,3 +4,4 @@ INSTRUCTIONS.md
 package-lock.json
 package.json
 node_modules/
+testConnection.js
