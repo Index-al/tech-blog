@@ -19,6 +19,7 @@
             </h1>
             <nav>
                 {{#if logged_in}}
+                <a href="/dashboard" class="px-3 py-2 rounded-md text-sm font-medium bg-gray-900 hover:bg-gray-700">My Posts</a>
                 <a href="/account" class="px-3 py-2 rounded-md text-sm font-medium bg-gray-900 hover:bg-gray-700">My Account</a>
                 <button id="logout" class="ml-4 px-3 py-2 rounded-md text-sm font-medium bg-red-600 hover:bg-red-700">Logout</button>
                 {{else}}

@@ -5,7 +5,7 @@ const withAuth = require("../utils/auth");
 // GET all posts for homepage and join with user data
 router.get("/", async (req, res) => {
     try {
-      res.render("homepage", {
+      res.render("home", {
         logged_in: req.session.logged_in,
       });
     } catch (err) {
@@ -31,6 +31,17 @@ router.get("/logout", (req, res) => {
         return;
     }
     res.render("logout");
+});
+
+// Dashboard for viewing all user's posts
+router.get("/dashboard", withAuth, async (req, res) => {
+    try {
+        res.render("dashboard", {
+            logged_in: true,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 // User route for account info

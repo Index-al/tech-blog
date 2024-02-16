@@ -1,0 +1,9 @@
+{{!-- This will allow users to see and add new posts --}}
+<h1>Dashboard</h1>
+{{#each userPosts as |post|}}
+  <div class="post">
+    <h2>{{post.title}}</h2>
+    <a href="/dashboard/edit/{{post.id}}">Edit</a>
+  </div>
+{{/each}}
+<a href="/dashboard/new">Add New Post</a>

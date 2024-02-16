@@ -1,0 +1,8 @@
+{{!-- This will allow users to edit their post --}}
+<form id="edit-post-form">
+  <input type="text" id="post-title" value="{{post.title}}" required />
+  <textarea id="post-content" required>{{post.content}}</textarea>
+  <button type="submit">Update Post</button>
+</form>
+
+<button id="delete-post">Delete Post</button>
