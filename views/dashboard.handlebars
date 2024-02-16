@@ -1,9 +1,15 @@
-{{!-- This will allow users to see and add new posts --}}
-<h1>Dashboard</h1>
+{{! This will allow users to see and add new posts }}
+<h1 class="text-3xl font-bold mb-4">Dashboard</h1>
 {{#each userPosts as |post|}}
-  <div class="post">
-    <h2>{{post.title}}</h2>
-    <a href="/dashboard/edit/{{post.id}}">Edit</a>
-  </div>
+	<div class="bg-white p-4 rounded shadow mb-4">
+		<h2 class="text-xl font-semibold">{{post.title}}</h2>
+		<a
+			href="/dashboard/edit/{{post.id}}"
+			class="text-blue-500 hover:underline"
+		>Edit</a>
+	</div>
 {{/each}}
-<a href="/dashboard/new">Add New Post</a>
+<a
+	href="/dashboard/new"
+	class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+>Add New Post</a>

@@ -10,6 +10,8 @@ const helpers = require("./utils/helpers"); // Helpers module
 const sequelize = require("./config/connection"); // Connection module
 const SequelizeStore = require("connect-session-sequelize")(session.Store); // Session store module
 const userRoutes = require("./controllers/api/userRoutes"); // User routes module
+const postRoutes = require('./controllers/postController'); // Post routes module
+const commentRoutes = require('./controllers/commentController'); // Comment routes module
 
 // Variables
 const app = express();
@@ -32,15 +34,21 @@ const sess = {
 
 // Middleware
 app.use(session(sess));
+
 // Handlebars
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
+
 // Express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
 // Routes
 app.use(routes);
+app.use('/posts', postRoutes);
+app.use('/comments', commentRoutes);
+
 // Connection
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
