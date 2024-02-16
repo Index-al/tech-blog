@@ -9,6 +9,7 @@ const routes = require("./controllers"); // Routes module
 const helpers = require("./utils/helpers"); // Helpers module
 const sequelize = require("./config/connection"); // Connection module
 const SequelizeStore = require("connect-session-sequelize")(session.Store); // Session store module
+const userRoutes = require("./controllers/api/userRoutes"); // User routes module
 
 // Variables
 const app = express();

@@ -23,7 +23,7 @@ const loginFormHandler = async (event) => {
             document.location.replace("/account");
         } else { // otherwise report the error
             const data = await response.json();
-            console.log(data);
+            console.log("Error logging in: ", data);
 
             // TODO: Add a modal or some other way to display the error instead of an alert
             alert('Failed to log in. Please try again.');
@@ -65,7 +65,7 @@ const signupFormHandler = async (event) => {
 }
 
 // Event listeners for login form
-document.querySelector("#login-form").addEventListener("submit", loginFormHandler);
+document.querySelector(".login-container").addEventListener("submit", loginFormHandler);
 
 // Event listener for signup form
-document.querySelector("#signup-form").addEventListener("submit", signupFormHandler);
+document.querySelector(".signup-container").addEventListener("submit", signupFormHandler);

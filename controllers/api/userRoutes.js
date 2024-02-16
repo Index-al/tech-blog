@@ -48,6 +48,7 @@ router.post("/login", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+    console.log('Error in logging in! ', err);
   }
 });
 
@@ -59,6 +60,24 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
+    console.log('Error in logging out! ', err);;
+  }
+});
+
+// New user sign up logic
+router.post("/signup", async (req, res) => {
+  console.log('Trying to sign up a user!');
+  try {
+    const userData = await User.create(req.body);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+      res.redirect("/account");
+      });
+  } catch (err) {
+    res.status(400).json(err);
+    console.log('Error in creating account! ', err);
   }
 });
 
