@@ -13,6 +13,7 @@ const userRoutes = require("./controllers/api/userRoutes"); // User routes modul
 const postRoutes = require('./controllers/postController'); // Post routes module
 const commentRoutes = require('./controllers/commentController'); // Comment routes module
 
+
 // Variables
 const app = express();
 const PORT = process.env.PORT || 3001; 
@@ -40,6 +41,7 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Express
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
