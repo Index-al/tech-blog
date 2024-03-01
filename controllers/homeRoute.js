@@ -1,17 +1,22 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { Post, User } = require("../models");
 const withAuth = require("../utils/auth");
 
 // GET all posts for homepage and join with user data
 router.get("/", async (req, res) => {
     try {
-      res.render("home", {
-        logged_in: req.session.logged_in,
-      });
+        const postData = await Post.findAll({
+            include: [{ model: User, attributes: ['username'] }]
+        });
+        const posts = postData.map(post => post.get({ plain: true }));
+        res.render("home", {
+            posts,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
-      res.status(500).json(err);
+        res.status(500).json(err);
     }
-  });
+});
 
 // User route for logging in
 router.get("/login", (req, res) => {
@@ -21,6 +26,17 @@ router.get("/login", (req, res) => {
     return;
     }
     res.render("login");
+});
+
+// Create a new post view(/create-post)
+router.get("/dashboard/new", withAuth, async (req, res) => {
+    try {
+        res.render("create-post", {
+            logged_in: true,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 // User route for logging out
