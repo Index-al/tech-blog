@@ -11,39 +11,34 @@
 {{!-- Show all posts for the currently logged in user--}}
 {{#each posts}}
 
-  <article class="bg-white shadow-md rounded-lg p-6">
+  <article class="bg-white shadow-md rounded-lg p-6 post">
 		<h3 class="text-2xl font-bold mb-2">{{this.title}}</h3>
 		<p class="text-gray-700 mb-4">{{this.content}}</p>
 		<p class="text-gray-700 mb-4">Date Posted: {{this.createdAt}}</p>
+
+		{{!-- Read more button --}}
 		<a
 			href="/posts/{{this.id}}"
 			class="inline-block bg-indigo-500 text-white rounded-lg px-4 py-2"
 		>Read more</a>
+
 		{{!-- Edit post button --}}
 		{{#if this.user_id}}
-		<a
-			href="/dashboard/edit/{{this.id}}"
-			class="inline-block bg-indigo-500 text-white rounded-lg px-4 py-2"
-			style="margin-left: 10px;"
-			>Edit</a>
-			{{/if}}
-			{{!-- Delete post button, only show if the logged in user is the owner of the post. --}}
-			{{#if this.user_id}}
-            {{!-- <button type="submit" 
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            id="delete-post-form">
-                Delete Post
-            </button> --}}
-			<button
-				type="button"
-				class="delete-post-btn inline-block bg-red-500 text-white rounded-lg px-4 py-2"
-				data-id="{{this.id}}"
-				onclick="deletePost(this.getAttribute('data-id'))"
-			>
-				Delete Post
-			</button>
+		<a href="/dashboard/edit/{{this.id}}" class="edit-post-btn inline-block bg-indigo-500 text-white rounded-lg px-4 py-2">Edit Post</a>
+		{{/if}}
 
-			{{/if}}
+		{{!-- Delete post button, only show if the logged in user is the owner of the post. --}}
+		{{#if this.user_id}}
+		<button
+			type="button"
+			class="delete-post-btn inline-block bg-red-500 text-white rounded-lg px-4 py-2"
+			data-id="{{this.id}}"
+			onclick="deletePost(this.getAttribute('data-id'))"
+		>
+			Delete Post
+		</button>
+
+		{{/if}}
 	</article>
 
 {{!-- If no posts are found, inform the user --}}
