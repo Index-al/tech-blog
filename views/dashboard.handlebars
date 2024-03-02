@@ -34,22 +34,16 @@
             id="delete-post-form">
                 Delete Post
             </button> --}}
-			<form
-				method="DELETE"
-				action="/posts/{{this.id}}"
-				onsubmit="event.preventDefault();
-				console.log('Delete button clicked for post ID: ' + this.id);"
+			<button
+				type="button"
+				class="delete-post-btn inline-block bg-red-500 text-white rounded-lg px-4 py-2"
+				data-id="{{this.id}}"
+				onclick="deletePost(this.getAttribute('data-id'))"
 			>
-				<button
-					type="submit"
-					class="inline-block bg-red-500 text-white rounded-lg px-4 py-2"
-					id="delete-post-form"
-				>
-					Delete Post
-				</button>
-			</form>
+				Delete Post
+			</button>
 
-				{{/if}}
+			{{/if}}
 	</article>
 
 {{!-- If no posts are found, inform the user --}}
