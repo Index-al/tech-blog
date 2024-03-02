@@ -25,6 +25,15 @@ Post.init(
         model: 'user',
         key: 'id'
       }
+    },
+    post_url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    post_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     }
   },
   {

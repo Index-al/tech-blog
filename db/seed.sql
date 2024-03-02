@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS users;
 -- Setup table for users
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
+  user_id VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -36,7 +36,7 @@ CREATE TABLE comments (
 );
 
 -- Populate with some test data
-INSERT INTO users (username, email, password) VALUES ('testuser', 'test@example.com', 'hashedpassword');
+INSERT INTO users (user_id, email, password) VALUES ('testuser', 'test@example.com', 'hashedpassword');
 
 INSERT INTO posts (title, content) VALUES ('First Post', 'This is the first post on the blog');
 INSERT INTO posts (title, content) VALUES ('Second Post', 'This is the second post on the blog');
