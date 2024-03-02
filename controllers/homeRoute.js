@@ -6,7 +6,7 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [{ model: User, attributes: ['username'] }]
+            include: [{ model: User, attributes: ['user_id'] }]
         });
         const posts = postData.map(post => post.get({ plain: true }));
         res.render("home", {
@@ -51,14 +51,44 @@ router.get("/logout", (req, res) => {
 
 // Dashboard for viewing all user's posts
 router.get("/dashboard", withAuth, async (req, res) => {
+	try {
+		const postData = await Post.findAll({
+			where: {
+				user_id: req.session.user_id,
+			},
+		});
+
+		const posts = postData.map((post) => post.get({ plain: true }));
+
+		res.render("dashboard", {
+			posts,
+			logged_in: req.session.logged_in,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+
+
+
+// GET all posts for homepage and join with user data
+router.get("/", async (req, res) => {
     try {
-        res.render("dashboard", {
-            logged_in: true,
+        const postData = await Post.findAll({
+            include: [{ model: User, attributes: ['user_id'] }]
+        });
+        const posts = postData.map(post => post.get({ plain: true }));
+        res.render("home", {
+            posts,
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
+
 
 // User route for account info
 router.get("/account", withAuth, async (req, res) => {
