@@ -10,6 +10,7 @@ console.log("Hitting index controllers!");
 router.use("/", homeRoutes);
 router.use("/api", api);
 router.use('/posts/new', postRoutes);
+router.use('/posts', postRoutes);
 
 // Export the router to be used in server.js
 module.exports = router;

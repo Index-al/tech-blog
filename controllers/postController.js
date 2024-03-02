@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../models');
-const { User } = require('../models');
+const { Post, User } = require('../models');
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -17,22 +16,6 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-});
-
-// Get a single post by id
-router.get("/:id", async (req, res) => {
-	try {
-		const postData = await Post.findByPk(req.params.id, {
-			include: [{ model: User, attributes: ["user_id"] }],
-		});
-		if (!postData) {
-			res.status(404).json({ message: "No post found with this id!" });
-			return;
-		}
-		res.status(200).json(postData);
-	} catch (err) {
-		res.status(500).json(err);
-	}
 });
 
 // Create a new post

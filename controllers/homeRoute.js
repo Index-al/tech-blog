@@ -39,6 +39,23 @@ router.get("/dashboard/new", withAuth, async (req, res) => {
     }
 });
 
+// View a post view(/single-post)
+router.get('/posts/:id', async (req, res) => {
+    try {
+        const post = await Post.findByPk(req.params.id, {
+            include: [User]
+        });
+
+        if (post) {
+            res.render('single-post', { post: post.get({ plain: true }) });
+        } else {
+            res.status(404).send('Post not found');
+        }
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 // User route for logging out
 router.get("/logout", (req, res) => {
     // If they are already logged out then redirect to the homepage
