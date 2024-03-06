@@ -47,10 +47,7 @@ router.get("/posts/:id", async (req, res) => {
 		});
 
 		if (post) {
-			if (req.session.logged_in) {
-				logged_in = true;
-			}
-			res.render("single-post", { post: post.get({ plain: true }), logged_in });
+			res.render("single-post", { post: post.get({ plain: true }), logged_in: req.session.logged_in });
 		} else {
 			res.status(404).send("Post not found");
 		}

@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new post
-router.post('/posts/new', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const postData = await Post.create({
             // POST DATA
@@ -30,8 +30,10 @@ router.post('/posts/new', async (req, res) => {
             post_url: req.body.post_url,
             post_date: req.body.post_date
         });
+        console.log("Hitting create new post route FAILURE(in postController.js)");
         res.status(200).json(postData);
     } catch (err) {
+        console.log("Hitting create new post route SUCCESS(in postController.js)");;
         res.status(400).json(err);
     }
 });
