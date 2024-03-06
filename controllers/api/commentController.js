@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 
 
 // Create a new comment
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.create({
             // COMMENT DATA
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update a comment
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.update(
             // UPDATE DATA
@@ -44,7 +44,7 @@ router.put('/:id', async (req, res) => {
 );
 
 // Delete a comment
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.destroy({
             where: {
