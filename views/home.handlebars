@@ -4,7 +4,11 @@
   <article class="bg-white shadow-md rounded-lg p-6">
 		<h3 class="text-2xl font-bold mb-2">{{this.title}}</h3>
 		<p class="text-gray-700 mb-4">{{this.content}}</p>
-		<p class="text-gray-700 mb-4">Date Posted: {{this.createdAt}}</p>
+		<p class="text-gray-700 mb-4">
+			Date Posted:
+			<span title="{{this.createdAt}}">{{format_date this.createdAt}}</span> 
+		</p>
+
 		<p class="text-gray-700 mb-4">Created by: {{this.user.user_id}}</p>
 		<a
 			href="/posts/{{this.id}}"

@@ -1,10 +1,14 @@
 // Purpose: This file is used to export the user routes to be used in server.js
 
 const router = require("express").Router();
-const userRoutes = require("./userRoutes");
+const userController = require("./userController");
+const postController = require("./postController");
+const commentController = require("./commentController");
 
-// Use /users for all user routes
-router.use("/users", userRoutes);
+// Routes for user, post, and comment controllers
+router.use('/users', userController);
+router.use('/posts', postController);
+router.use('/comments', commentController);
 
 // Export the router to be used in server.js
 module.exports = router;

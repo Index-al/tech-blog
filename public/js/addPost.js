@@ -15,7 +15,7 @@ async function newFormHandler(event) {
   const post_date = new Date();
 
 	// Sends user input/info to server
-	const response = await fetch("/posts/new", {
+	const response = await fetch("/posts", {
 		method: "POST",
 		body: JSON.stringify({
       user_id,

@@ -1,8 +1,18 @@
-{{!-- This will allow users to edit their post --}}
-<form id="edit-post-form">
-  <input type="text" id="post-title" value="{{post.title}}" required />
-  <textarea id="post-content" required>{{post.content}}</textarea>
-  <button type="submit">Update Post</button>
+<form id="edit-post-form" class="mt-4">
+    <div class="mb-4">
+        <label for="post-title" class="sr-only">Title</label>
+        <input type="text" id="post-title" name="title" class="bg-gray-100 border-2 w-full p-4 rounded-lg" value="{{post.title}}" required>
+    </div>
+
+    <div class="mb-4">
+        <label for="post-content" class="sr-only">Content</label>
+        <textarea id="post-content" name="content" class="bg-gray-100 border-2 w-full p-4 rounded-lg" required>{{post.content}}</textarea>
+    </div>
+
+    <div class="flex justify-end">
+        <button type="submit" class="px-4 py-2 rounded bg-blue-500 hover:bg-blue-700 text-white">Update Post</button>
+    </div>
+
 </form>
 
-<button id="delete-post">Delete Post</button>
+<script src="/js/editPost.js"></script>

@@ -1,0 +1,32 @@
+Date : 2024-03-04 18:54:06
+Directory : c:\Users\Bootcamp\repos\challenges\tech-blog\controllers
+Total : 6 files,  352 codes, 39 comments, 58 blanks, all 449 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          6 |        352 |         39 |         58 |        449 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                          | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                             |          6 |        352 |         39 |         58 |        449 |
+| . (Files)                                                                     |          4 |        280 |         31 |         41 |        352 |
+| api                                                                           |          2 |         72 |          8 |         17 |         97 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                      | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\api\index.js         | JavaScript |          4 |          3 |          3 |         10 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\api\userRoutes.js    | JavaScript |         68 |          5 |         14 |         87 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\commentController.js | JavaScript |         53 |          6 |          6 |         65 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\homeRoute.js         | JavaScript |        142 |         16 |         22 |        180 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\index.js             | JavaScript |         10 |          3 |          3 |         16 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\postController.js    | JavaScript |         75 |          6 |         10 |         91 |
+| Total                                                                         |            |        352 |         39 |         58 |        449 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

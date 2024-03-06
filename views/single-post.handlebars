@@ -1,0 +1,40 @@
+{{! This will show the post and its comments }}
+<article class="bg-white shadow rounded p-6">
+	<h1 class="text-2xl font-bold mb-2">{{post.title}}</h1>
+	<p class="text-gray-600">{{post.content}}</p>
+
+	<div class="text-sm text-gray-400 mt-2">
+		Posted by
+		{{post.user.user_id}}
+		on
+		<span title="{{post.createdAt}}">{{format_date post.createdAt}}</span> 
+	</div>
+</article>
+
+{{! Make sure the user is logged in before showing the comment form }}
+{{#if logged_in}}
+	{{! Comment form will go here }}
+	<form id="comment-form" class="bg-white shadow rounded p-4 mt-4">
+		<textarea
+			id="comment-content"
+			class="w-full border rounded p-2"
+			required
+		></textarea>
+		<button
+			type="submit"
+			class="bg-blue-500 text-white px-4 py-2 rounded mt-2"
+		>Add Comment</button>
+	</form>
+{{/if}}
+
+{{#each post.comments as |comment|}}
+	<div class="comment bg-gray-100 p-4 my-2 rounded">
+		<p>{{comment.content}}</p>
+		<p class="text-xs text-gray-500">
+			Comment by
+			{{comment.user.user_id}}
+			on
+			{{format_date comment.createdAt}}
+		</p>
+	</div>
+{{/each}}

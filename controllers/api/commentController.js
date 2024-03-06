@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Comment } = require('../models');
+const { Comment } = require('../../models');
 // Import other required models and middleware
-const { Post, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Post, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 // Create a new comment

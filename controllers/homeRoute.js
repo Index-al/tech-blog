@@ -39,6 +39,24 @@ router.get("/dashboard/new", withAuth, async (req, res) => {
     }
 });
 
+// View a post view(/single-post)
+router.get("/posts/:id", async (req, res) => {
+	try {
+		const post = await Post.findByPk(req.params.id, {
+			include: [User],
+		});
+
+		if (post) {
+			res.render("single-post", { post: post.get({ plain: true }), logged_in: req.session.logged_in });
+		} else {
+			res.status(404).send("Post not found");
+		}
+	} catch (error) {
+		res.status(500).send(error.message);
+	}
+});
+
+
 // User route for logging out
 router.get("/logout", (req, res) => {
     // If they are already logged out then redirect to the homepage
@@ -114,50 +132,6 @@ router.get("/signup", (req, res) => {
         return;
     }
     res.render("signup");
-});
-
-// User route for creating a new post
-router.get("/newpost", withAuth, async (req, res) => {
-    try {
-        res.render("newpost", {
-            logged_in: true,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-// User route for editing a post
-router.get("/editpost", withAuth, async (req, res) => {
-    try {
-        res.render("editpost", {
-            logged_in: true,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-// User route for viewing a post
-router.get("/viewpost", withAuth, async (req, res) => {
-    try {
-        res.render("viewpost", {
-            logged_in: true,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-// User route for deleting a post
-router.get("/deletepost", withAuth, async (req, res) => {
-    try {
-        res.render("deletepost", {
-            logged_in: true,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
 });
 
 module.exports = router;
