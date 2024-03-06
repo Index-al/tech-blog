@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User } = require('../../models');
 const express = require('express');
 const app = express();
 app.use(express.json());
-const withAuth = require('../utils/auth');
+const withAuth = require('../../utils/auth');
+const session = require('express-session');
 
 
 // Get all posts
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new post
-router.post('/', async (req, res) => {
+router.post('/posts/new', async (req, res) => {
     try {
         const postData = await Post.create({
             // POST DATA
@@ -59,13 +60,16 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
 
+        // if (session.user_id!== postData.user_id) {
+        //     logged_in: true;
+        // }
         if (!postData) {
             res.status(404).send('Post not found');
             return;
         }
 
         const post = postData.get({ plain: true });
-        res.render('edit-post', { post });
+        res.render('edit-post', { post, logged_in: true });
     } catch (err) {
         res.status(500).send(err.message);
     }

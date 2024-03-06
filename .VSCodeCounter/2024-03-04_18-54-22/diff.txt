@@ -1,0 +1,41 @@
+Date : 2024-03-04 18:54:22
+Directory : c:\Users\Bootcamp\repos\challenges\tech-blog\public
+Total : 12 files,  -202 codes, -14 comments, -26 blanks, all -242 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         12 |       -202 |        -14 |        -26 |       -242 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                          | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                             |         12 |       -202 |        -14 |        -26 |       -242 |
+| ..                                                                            |          6 |       -352 |        -39 |        -58 |       -449 |
+| ..\controllers                                                                |          6 |       -352 |        -39 |        -58 |       -449 |
+| ..\controllers (Files)                                                        |          4 |       -280 |        -31 |        -41 |       -352 |
+| ..\controllers\api                                                            |          2 |        -72 |         -8 |        -17 |        -97 |
+| js                                                                            |          6 |        150 |         25 |         32 |        207 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                      | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\api\index.js         | JavaScript |         -4 |         -3 |         -3 |        -10 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\api\userRoutes.js    | JavaScript |        -68 |         -5 |        -14 |        -87 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\commentController.js | JavaScript |        -53 |         -6 |         -6 |        -65 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\homeRoute.js         | JavaScript |       -142 |        -16 |        -22 |       -180 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\index.js             | JavaScript |        -10 |         -3 |         -3 |        -16 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\controllers\postController.js    | JavaScript |        -75 |         -6 |        -10 |        -91 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\public\js\addComment.js          | JavaScript |         23 |          0 |          4 |         27 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\public\js\addPost.js             | JavaScript |         33 |          6 |          8 |         47 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\public\js\deletePost.js          | JavaScript |         14 |          0 |          1 |         15 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\public\js\editPost.js            | JavaScript |         23 |          0 |          3 |         26 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\public\js\login.js               | JavaScript |         43 |         15 |         13 |         71 |
+| c:\Users\Bootcamp\repos\challenges\tech-blog\public\js\logout.js              | JavaScript |         14 |          4 |          3 |         21 |
+| Total                                                                         |            |       -202 |        -14 |        -26 |       -242 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

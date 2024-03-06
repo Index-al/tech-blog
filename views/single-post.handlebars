@@ -4,6 +4,7 @@
   <p>{{post.content}}</p>
 </article>
 
+{{!-- Make sure the user is logged in before showing the comment form --}}
 {{#if logged_in}}
   {{!-- Comment form will go here --}}
   <form id="comment-form">

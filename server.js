@@ -9,8 +9,8 @@ const routes = require("./controllers"); // Routes module
 const helpers = require("./utils/helpers"); // Helpers module
 const sequelize = require("./config/connection"); // Connection module
 const SequelizeStore = require("connect-session-sequelize")(session.Store); // Session store module
-const postRoutes = require('./controllers/postController'); // Post routes module
-const commentRoutes = require('./controllers/commentController'); // Comment routes module
+const postRoutes = require('./controllers/api/postController'); // Post routes module
+const commentRoutes = require('./controllers/api/commentController'); // Comment routes module
 
 // Variables
 const app = express();
@@ -50,6 +50,8 @@ app.use('/posts', postRoutes);
 app.use('/comments', commentRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/dashboard', postRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/dashboard', commentRoutes);
 
 // Connection
 sequelize.sync({ force: false }).then(() => {
