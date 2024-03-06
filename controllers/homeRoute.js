@@ -1,12 +1,13 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const { Post, Comment, User } = require('../models');
 const withAuth = require("../utils/auth");
 
 // GET all posts for homepage and join with user data
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [{ model: User, attributes: ['user_id'] }]
+            include: [{ model: User, attributes: ['user_id'] }],
+            order: [["createdAt", "DESC"]],
         });
         const posts = postData.map(post => post.get({ plain: true }));
         res.render("home", {
@@ -41,19 +42,28 @@ router.get("/dashboard/new", withAuth, async (req, res) => {
 
 // View a post view(/single-post)
 router.get("/posts/:id", async (req, res) => {
-	try {
-		const post = await Post.findByPk(req.params.id, {
-			include: [User],
-		});
+    try {
+        const post = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Comment,
+                    include: [User]
+                },
+                User
+            ]
+        });
 
-		if (post) {
-			res.render("single-post", { post: post.get({ plain: true }), logged_in: req.session.logged_in });
-		} else {
-			res.status(404).send("Post not found");
-		}
-	} catch (error) {
-		res.status(500).send(error.message);
-	}
+        if (post) {
+            res.render("single-post", { 
+                post: post.get({ plain: true }),
+                logged_in: req.session.logged_in 
+            });
+        } else {
+            res.status(404).send("Post not found");
+        }
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 });
 
 
@@ -71,6 +81,7 @@ router.get("/logout", (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
 	try {
 		const postData = await Post.findAll({
+            order: [["createdAt", "DESC"]],
 			where: {
 				user_id: req.session.user_id,
 			},
@@ -94,6 +105,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
+            order: [["createdAt", "DESC"]],
             include: [{ model: User, attributes: ['user_id'] }]
         });
         const posts = postData.map(post => post.get({ plain: true }));
