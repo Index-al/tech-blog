@@ -18,7 +18,7 @@ async function submitCommentForm(event) {
     });
 
     if (response.ok) {
-      // location.reload();
+      location.reload();
       console.log("Hit the submitCommentForm route SUCCESS(in addComment.js)");
     } else {
       alert('Failed to create comment');

@@ -28,20 +28,28 @@
 	</form>
 {{/if}}
 
-{{!-- Show all comments that have a matching post_id --}}
-{{!-- {{#if post.comments}}
-<div class="comments">
-    <h2>Comments:</h2>
-    {{#each post.comments}}
-    <div class="comment">
-        <p>Comment by {{this.user.username}} on {{format_date this.createdAt}}:</p>
-        <p>{{this.content}}</p>
-    </div>
-    {{/each}}
-</div>
+{{! Show all comments that have a matching post_id }}
+{{#if post.comments}}
+	<div class="comments">
+		<h2 class="text-xl font-bold mb-2">Comments:</h2>
+
+		{{#each post.comments}}
+			<div class="comment bg-gray-100 p-4 rounded-lg mb-4">
+				<div class="text-sm text-gray-600">
+						Comment by
+						{{this.user.user_id}}
+						on
+					<span class="text-sm text-gray-600" title="{{this.createdAt}}">{{format_date this.createdAt}}</span>
+				</div>
+				<p class="mt-2">{{this.content}}</p>
+			</div>
+		{{/each}}
+
+	</div>
 {{else}}
-<p>No comments yet.</p>
-{{/if}} --}}
+	<p class="text-gray-500 italic">No comments yet.</p>
+{{/if}}
+
 			
 
 {{! Load the addComment.js file --}}
