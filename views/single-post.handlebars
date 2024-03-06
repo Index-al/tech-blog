@@ -23,18 +23,26 @@
 		<button
 			type="submit"
 			class="bg-blue-500 text-white px-4 py-2 rounded mt-2"
+			id="comment-btn"
 		>Add Comment</button>
 	</form>
 {{/if}}
 
-{{#each post.comments as |comment|}}
-	<div class="comment bg-gray-100 p-4 my-2 rounded">
-		<p>{{comment.content}}</p>
-		<p class="text-xs text-gray-500">
-			Comment by
-			{{comment.user.user_id}}
-			on
-			{{format_date comment.createdAt}}
-		</p>
-	</div>
-{{/each}}
+{{!-- Show all comments that have a matching post_id --}}
+{{!-- {{#if post.comments}}
+<div class="comments">
+    <h2>Comments:</h2>
+    {{#each post.comments}}
+    <div class="comment">
+        <p>Comment by {{this.user.username}} on {{format_date this.createdAt}}:</p>
+        <p>{{this.content}}</p>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<p>No comments yet.</p>
+{{/if}} --}}
+			
+
+{{! Load the addComment.js file --}}
+<script src="/js/addComment.js"></script>
