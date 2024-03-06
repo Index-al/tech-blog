@@ -11,6 +11,7 @@ const session = require('express-session');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
+            order: [["createdAt", "DESC"]],
             include: [{ model: User, attributes: ['user_id'] }]
         });
         res.status(200).json(postData);

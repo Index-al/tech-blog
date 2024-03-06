@@ -6,7 +6,8 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [{ model: User, attributes: ['user_id'] }]
+            include: [{ model: User, attributes: ['user_id'] }],
+            order: [["createdAt", "DESC"]],
         });
         const posts = postData.map(post => post.get({ plain: true }));
         res.render("home", {
@@ -80,6 +81,7 @@ router.get("/logout", (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
 	try {
 		const postData = await Post.findAll({
+            order: [["createdAt", "DESC"]],
 			where: {
 				user_id: req.session.user_id,
 			},
@@ -103,6 +105,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const postData = await Post.findAll({
+            order: [["createdAt", "DESC"]],
             include: [{ model: User, attributes: ['user_id'] }]
         });
         const posts = postData.map(post => post.get({ plain: true }));

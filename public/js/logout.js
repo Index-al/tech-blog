@@ -6,7 +6,7 @@ const logout = async () => {
     });
 
     if (response.ok) {
-        document.location.replace("/");
+        document.location.replace("/login");
     } else {
         // In the event of an error, report the error
         const data = await response.json();
